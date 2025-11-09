@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', SFMono-Regular, monospace;
+  color: #e6fff6;
+  background-color: #030303;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #030303;
+  color: #e6fff6;
+  overflow: hidden;
+}
+
+a {
+  color: #00fff2;
+}
+
+a:hover {
+  color: #a8ff60;
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 10% 20%, rgba(168, 255, 96, 0.08), transparent 25%),
+    radial-gradient(circle at 80% 0%, rgba(0, 255, 242, 0.08), transparent 35%),
+    radial-gradient(circle at 50% 80%, rgba(0, 255, 242, 0.05), transparent 30%);
+  mix-blend-mode: screen;
+  animation: shimmer 18s linear infinite;
+  opacity: 0.6;
+}
+
+.scanline {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 48%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0) 52%);
+  background-size: 100% 6px;
+  opacity: 0.15;
+  mix-blend-mode: soft-light;
+  animation: scan 10s linear infinite;
+}
+
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(0, 255, 242, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 242, 0.08) 1px, transparent 1px);
+  background-size: 120px 120px;
+  opacity: 0.12;
+  animation: drift 40s linear infinite;
+}
+
+.particle-field span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  background: rgba(0, 255, 242, 0.6);
+  box-shadow: 0 0 8px rgba(0, 255, 242, 0.8);
+  animation: float 12s ease-in-out infinite alternate;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: 200px 400px, -400px 200px, 0 -300px;
+  }
+}
+
+@keyframes drift {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 300px 300px, -300px -300px;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate3d(40px, -30px, 0) scale(1.2);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(-25px, 30px, 0) scale(0.9);
+    opacity: 0.6;
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 242, 0.2);
+  border-radius: 9999px;
+}
