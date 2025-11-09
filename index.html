@@ -7,11 +7,70 @@
       name="description"
       content="Akshit Sivaraman — engineering, math, physics, and code distilled into an interactive research terminal."
     />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="public/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
     <title>AkshitOS Terminal</title>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <div class="noise-overlay" aria-hidden="true"></div>
+    <div class="grid-overlay" aria-hidden="true"></div>
+    <div class="scanline" aria-hidden="true"></div>
+    <div class="particle-field" data-particles aria-hidden="true"></div>
+
+    <main class="app-shell">
+      <section class="terminal">
+        <div class="terminal-glow" aria-hidden="true"></div>
+        <div class="terminal-inner">
+          <header class="terminal-header">
+            <div class="identity">
+              <img
+                src="public/pfp.jpg"
+                alt="Akshit avatar"
+                class="avatar"
+                width="48"
+                height="48"
+              />
+              <div>
+                <p class="identity-name">Akshit Sivaraman</p>
+                <p class="identity-tagline">engineering && math && physics && code</p>
+              </div>
+            </div>
+            <div class="status">
+              <span class="status-pill">
+                <span class="status-dot"></span>
+                online
+              </span>
+              <span class="version">v1.0.0</span>
+            </div>
+          </header>
+
+          <div class="terminal-body">
+            <div class="terminal-scroll custom-scrollbar" data-terminal-scroll>
+              <div class="boot-sequence" data-boot></div>
+              <div class="history" data-history></div>
+              <div class="section-region" data-section></div>
+            </div>
+
+            <form class="prompt" data-form>
+              <div class="prompt-prefix">
+                <span class="accent">akshitos@core</span>
+                <span class="path">~$</span>
+              </div>
+              <div class="prompt-display" data-prompt-display></div>
+              <input type="text" class="prompt-input" data-prompt-input disabled autocomplete="off" spellcheck="false" />
+              <button class="prompt-action" type="submit" disabled>EXEC</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="main.js" defer></script>
   </body>
 </html>
