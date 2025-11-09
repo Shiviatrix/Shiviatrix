@@ -1,4 +1,3 @@
-### Hi there 👋
+Welcome
 
-- 🔭 I’m currently working on my own website
-
+Try doing stuff
